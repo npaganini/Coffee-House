@@ -6,8 +6,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637581125423735284
-    m_Hash: 2752014713
+      ticks: 637589036523617246
+    m_Hash: 4127707855
   m_LockFileStatus:
     m_FilePath: E:/Documents/ITBA/2021 - The Last Cuatrimestre/Realidad Virtual/TP5/Coffee-House/Coffee
       House/Packages/packages-lock.json
@@ -15,8 +15,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637581125424035741
-    m_Hash: 2945701912
+      ticks: 637589036523627245
+    m_Hash: 4178283873
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -135,6 +135,7 @@ m_PackageAssets:
         - 1.3.7
         - 1.3.8
         - 1.3.9
+        - 1.4.9
         - 1.5.7
         - 2.0.0-preview.6
         - 2.0.0-preview.8
@@ -826,11 +827,13 @@ m_PackageAssets:
         - 4.0.1
         - 4.0.3
         - 4.0.5
+        - 4.0.6
         compatible:
         - 4.0.1
         - 4.0.3
         - 4.0.5
-        verified: 4.0.5
+        - 4.0.6
+        verified: 4.0.6
       dependencies:
       - name: com.unity.modules.subsystems
         version: 1.0.0
