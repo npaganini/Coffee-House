@@ -7,6 +7,15 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 
+# Project
+Coffee\ House/Library/
+Coffee\ House/Temp/
+Coffee\ House/Obj/
+Coffee\ House/Build/
+Coffee\ House/Builds/
+Coffee\ House/Logs/
+Coffee\ House/MemoryCaptures/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
