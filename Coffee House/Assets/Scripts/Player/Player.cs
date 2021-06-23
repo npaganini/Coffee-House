@@ -24,6 +24,16 @@ public class Player : MonoBehaviour
         {
             Interact();
         }
+
+        if (Input.GetButton("Fire1"))
+        {
+            AlsoMove();
+        }
+    }
+
+    private void AlsoMove()
+    {
+        transform.position += Vector3.forward * (PlayerSpeed * 0.01f);
     }
 
     private void Interact()
