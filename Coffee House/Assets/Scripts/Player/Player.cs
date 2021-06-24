@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     public CharacterController controller;
     public ExitMenu exitUi;
     private const float PlayerSpeed = 4f;
+    private const float RotateSpeed = 0.5f;
     private const float InteractDistance = 4f;
     public Camera mainCamera;
 
@@ -17,8 +18,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(move * Time.deltaTime * PlayerSpeed);
+        transform.Rotate(0, Input.GetAxis("Horizontal") * RotateSpeed, 0);
+        controller.SimpleMove(PlayerSpeed * Input.GetAxis("Vertical") * transform.forward);
 
         if (Input.GetKey(KeyCode.E) || Input.GetButtonDown("Fire1"))
         {
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
 
     private void AlsoMove()
     {
-        transform.position += Vector3.forward * (PlayerSpeed * 0.01f);
+        transform.position += controller.transform.forward * (PlayerSpeed * 0.01f);
     }
 
     private void Interact()
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, InteractDistance))
         {
-            Debug.Log("Me choqué primero con: " + hit.transform.name);
+            // Debug.Log("Me choqué primero con: " + hit.transform.name);
             if (hit.transform.CompareTag("DoorKnob"))
             {
                 exitUi.gameObject.SetActive(true);
