@@ -16,12 +16,12 @@ public class Book : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire2"))
         {
             index++;
             BookPage.SetTexture("_MainTex",Zas[index]);
         }
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) || Input.GetButtonDown("Fire1"))
         {
             index--;
             BookPage.SetTexture("_MainTex",Zas[index]);
