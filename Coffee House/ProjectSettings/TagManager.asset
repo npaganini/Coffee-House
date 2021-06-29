@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DoorKnob
+  - Jukebox
   layers:
   - Default
   - TransparentFX
