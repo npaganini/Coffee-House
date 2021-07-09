@@ -26,5 +26,7 @@ public class Book : MonoBehaviour
             index--;
             BookPage.SetTexture("_MainTex",Zas[index]);
         }
+        if (index == Zas.Length)
+            index = 0;
     }
 }
