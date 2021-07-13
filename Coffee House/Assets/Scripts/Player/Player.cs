@@ -26,10 +26,10 @@ public class Player : MonoBehaviour
             Interact();
         }
 
-        if (Input.GetButton("Fire1"))
+        /*if (Input.GetButton("Fire1"))
         {
             AlsoMove();
-        }
+        }*/
     }
 
     private void AlsoMove()
