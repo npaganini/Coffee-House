@@ -7,26 +7,45 @@ public class Press2Interact : MonoBehaviour
 {
     //public CharacterController controller;
     public Camera mainCamera;
+    public Material BookPage;
+    public TextMesh adviseText;
+    
 
-    int button_pressed = 0;
-    int index;
-    private string [] pdf_list = {"Alicia en el país de las maravillas", "Ana Karenina", "Bodas de sangre", "Cantar del Mio Cid", "Carta al padre", "Crímenes de la calle Morgue", "Cuentos completos"};
+    //lista de libros
+    public Texture[] Alicia;
+    public Texture[] Bodas;
+    public Texture[] MioCid;
+    public Texture[] Kafka;
+    public Texture[] CalleM;
+    public Texture[] Zas;
+
+    private int button_pressed = 0;
+    private int book_index = 0;
+    private int pdf_index = 0;
+
+
+    private string[] pdf_list = {"Alicia en el país de las maravillas", "Bodas de sangre", "Cantar del Mio Cid", "Carta al padre", "Crímenes de la calle Morgue", "!Zas!"};
     private const float InteractDistance = 2f;
+
+    void Start()
+    {
+        BookPage.SetTexture("_MainTex",Alicia[book_index]);
+    }
 
     private void Update()
     {
         
-        if (Input.GetButton("Fire1"))   //Button A
+        if (Input.GetButtonDown("Fire1"))   //Button A (next)
         {
             button_pressed = 1;
             Interact();
         }
-        else if (Input.GetButton("Fire2"))  //Button B
+        else if (Input.GetButtonDown("Fire2"))  //Button B (prev)
         {
             button_pressed = 2;
             Interact();
         }
-        else if (Input.GetButton("Fire3"))  //Button C
+        else if (Input.GetButtonDown("Fire3"))  //Button C (Pick)
         {
             button_pressed = 3;
             Interact();
@@ -40,7 +59,7 @@ public class Press2Interact : MonoBehaviour
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, InteractDistance))
         {
             // Debug.Log("Me choqué primero con: " + hit.transform.name);
-            if (hit.transform.CompareTag("Bookshelf"))
+            if (hit.transform.CompareTag("BookMenu"))  //Cambia el índice y setea qué libro leo
             {
                 if (button_pressed == 1)
                 {
@@ -52,26 +71,79 @@ public class Press2Interact : MonoBehaviour
                 }
                 if (button_pressed == 3)
                 {
-                    GiveBook();
+                    book_index = 0;
+                    SetBookTexture(pdf_index, 0);
                 }
             }
-            /*else if (hit.transform.CompareTag("Bookshelf"))
+             if (hit.transform.CompareTag("Book"))  //Setea material para las páginas siguientes o anterior
             {
-                
-            }*/
-            button_pressed = 12;
+                if (button_pressed == 1)
+                {
+                    SetBookTexture(pdf_index, book_index);
+                }
+                if (button_pressed == 2)
+                {
+                    book_index--;
+                    SetBookTexture(pdf_index, book_index);
+                }
+               
+            }
+           
         }
     }
     private void ShowNextBook()
     {
-        index++;
+        pdf_index++;
+        if (pdf_index > 5)
+            pdf_index = 0;
+        adviseText.text = pdf_list[pdf_index];
     }
     private void ShowPrevBook()
     {
-        index--;
+        pdf_index--;
+        if (pdf_index < 5)
+            pdf_index = 0;
+        adviseText.text = pdf_list[pdf_index];
     }
-    private void GiveBook()
+    private void SetBookTexture(int pdf_index, int book_index)  //Setea los materiales de las páginas del libro
     {
+        
+        if(pdf_index == 0)
+        {
+            if (book_index == Alicia.Length)
+                book_index = 0;
+            BookPage.SetTexture("_MainTex",Alicia[book_index]);
+        }
+        else if(pdf_index == 1)
+        {
+            if (book_index == Bodas.Length)
+                book_index = 0;
+            BookPage.SetTexture("_MainTex",Bodas[book_index]);
+        }
+        else if(pdf_index == 2)
+        {
+            if (book_index == MioCid.Length)
+                book_index = 0;
+            BookPage.SetTexture("_MainTex",MioCid[book_index]);
+        }
+        else if(pdf_index == 3)
+        {
+            if (book_index == Kafka.Length)
+                book_index = 0;
+            BookPage.SetTexture("_MainTex",Kafka[book_index]);
+        }
+        else if(pdf_index == 4)
+        {
+            if (book_index == CalleM.Length)
+                book_index = 0;
+            BookPage.SetTexture("_MainTex",CalleM[book_index]);
+        }
+        else if(pdf_index == 5)
+        {
+            if (book_index == Zas.Length)
+                book_index = 0;
+            BookPage.SetTexture("_MainTex",Zas[book_index]);
+        }
 
     }
 }

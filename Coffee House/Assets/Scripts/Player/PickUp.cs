@@ -14,7 +14,7 @@ public class PickUp : MonoBehaviour
         bcol =  GetComponent<BoxCollider>();
     }
     private void Update() {
-       if (Input.GetButtonDown("Fire1") && gotcha_sth == false) //No tengo nada y pulsa tecla: agarro
+       if (Input.GetButtonDown("Fire3") && gotcha_sth == false) //No tengo nada y pulsa tecla: agarro
        {
         bcol.enabled = false;
         rbody.useGravity = false;
@@ -22,7 +22,7 @@ public class PickUp : MonoBehaviour
         this.transform.parent = GameObject.Find("Holdstuff").transform;
         gotcha_sth = false;
        }
-       if (Input.GetButtonUp("Fire1") && gotcha_sth == true) //Tengo algo y suelta tecla: suelto
+       if (Input.GetButtonUp("Fire3") && gotcha_sth == true) //Tengo algo y suelta tecla: suelto
        {
         bcol.enabled = true;
         rbody.useGravity = true;

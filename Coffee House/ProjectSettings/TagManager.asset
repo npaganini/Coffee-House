@@ -7,6 +7,8 @@ TagManager:
   - DoorKnob
   - Jukebox
   - Bookshelf
+  - Book
+  - BookMenu
   layers:
   - Default
   - TransparentFX
