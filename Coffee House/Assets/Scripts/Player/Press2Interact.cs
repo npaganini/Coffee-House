@@ -38,12 +38,12 @@ public class Press2Interact : MonoBehaviour
     private void Update()
     {
         
-        if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Q))   //Button A (next)
+        if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.E))   //Button A (next)
         {
             button_pressed = 1;
             Interact();
         }
-        else if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.E))  //Button B (prev)
+        else if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Q))  //Button B (prev)
         {
             button_pressed = 2;
             Interact();
