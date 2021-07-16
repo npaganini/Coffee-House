@@ -4,6 +4,7 @@ public class Player : MonoBehaviour
 {
     public CharacterController controller;
     public ExitMenu exitUi;
+    public VolumeMenu volumeUi;
     private const float PlayerSpeed = 4f;
     private const float RotateSpeed = 0.5f;
     private const float InteractDistance = 4f;
@@ -40,13 +41,18 @@ public class Player : MonoBehaviour
     private void Interact()
     {
         RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, InteractDistance))
+        if (!Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, InteractDistance))
         {
-            // Debug.Log("Me choqué primero con: " + hit.transform.name);
-            if (hit.transform.CompareTag("DoorKnob"))
-            {
-                exitUi.gameObject.SetActive(true);
-            }
+            return;
+        }
+        // Debug.Log("Me choqué primero con: " + hit.transform.name);
+        if (hit.transform.CompareTag("DoorKnob"))
+        {
+            exitUi.gameObject.SetActive(true);
+        }
+        else if (hit.transform.CompareTag("Jukebox"))
+        {
+            volumeUi.gameObject.SetActive(true);
         }
     }
 }
